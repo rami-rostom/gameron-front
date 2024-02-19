@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
+
 import ToggleMode from '../ToggleMode/ToggleMode';
+import Spotlight from '../Spotlight/Spotlight';
 
 import './NavBar.scss';
 
@@ -23,6 +25,7 @@ function NavBar() {
         </div>
 
         <div className="header__aside">
+          <Spotlight />
           <ToggleMode />
         </div>
       </header>

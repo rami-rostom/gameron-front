@@ -3,6 +3,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
   padding: v.$pad;
 
@@ -29,5 +30,10 @@
         transition-duration: 500ms;
       }
     }
+  }
+
+  &__aside {
+    display: flex;
+    gap: v.$gap-xs;
   }
 }

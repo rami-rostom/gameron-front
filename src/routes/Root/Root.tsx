@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
+import { ThemeProvider } from '../../components/ThemeProvider/ThemeProvider';
+
 function Root() {
   const location = useLocation();
 
@@ -12,9 +14,11 @@ function Root() {
   }, [location]);
 
   return (
-    <div className="app">
-      <Outlet />
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="app">
+        <Outlet />
+      </div>
+    </ThemeProvider>
   );
 }
 

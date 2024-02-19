@@ -45,9 +45,9 @@ function Spotlight() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>Calendar</CommandItem>
-            <CommandItem>Search Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
+            <CommandItem>Game 1</CommandItem>
+            <CommandItem>Game 2</CommandItem>
+            <CommandItem>Game 3</CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>

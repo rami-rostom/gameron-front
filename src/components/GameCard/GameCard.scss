@@ -1,0 +1,54 @@
+@use '../../styles/variables' as v;
+
+.card {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: v.$gap-xl;
+
+    &-info {
+      display: flex;
+      gap: v.$gap-sm;
+    }
+
+    &-title {
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      text-align: start;
+    }
+  }
+
+  &__description {
+    font-size: v.$size-sm;
+    text-align: start;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: v.$size-sm;
+
+    &-rate {
+      display: flex;
+      gap: v.$gap-lg;
+
+      &-icon {
+        width: v.$size-lg;
+      }
+
+      &-value {
+        background-color: #51cb20;
+        color: hsl(var(--background));
+        padding: 0rem 0.2rem;
+        border-radius: 0.2rem;
+        font-weight: 800;
+      }
+    }
+  }
+}

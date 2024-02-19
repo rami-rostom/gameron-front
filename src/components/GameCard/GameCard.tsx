@@ -1,25 +1,27 @@
+import { Link } from 'react-router-dom';
+
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ArrowRightCircle } from 'lucide-react';
 
 import './GameCard.scss';
 
 function GameCard() {
   return (
     <Card className="card">
-      <CardHeader className="card__header">
+      <div className="card__header">
         <CardTitle className="card__header-title">Titre jeu</CardTitle>
         <div className="card__header-info">
           <Badge>Catégorie</Badge>
           <CardDescription>jj/mm/aaaa</CardDescription>
         </div>
-      </CardHeader>
+      </div>
       <CardContent>
         <p className="card__description">
           Lorem ipsum dolor sit amet consectetur. Tempor rhoncus quam nisl amet
@@ -27,16 +29,18 @@ function GameCard() {
         </p>
       </CardContent>
       <CardFooter className="card__footer">
-        <p className="card__footer-rate">
+        <div className="card__footer-rate">
           <img
             src="/icons/metacritic.svg"
             alt="Metacritic icon"
             className="card__footer-rate-icon"
           />
-          <p className="card__footer-rate-text">Note : </p>
           <p className="card__footer-rate-value">90</p>
-        </p>
-        <p className="card__footer-more">Plus d'infos</p>
+        </div>
+        <Link to={'#'} className="card__footer-more">
+          <p className="card__footer-more-text">Plus d'infos</p>
+          <ArrowRightCircle className="card__footer-more-icon" />
+        </Link>
       </CardFooter>
     </Card>
   );

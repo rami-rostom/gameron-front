@@ -3,7 +3,8 @@ import axios from 'axios';
 import { LocalStorage } from './LocalStorage';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/',
+  // baseURL: 'http://localhost:3000/',
+  baseURL: 'https://api.rawg.io/api/',
 });
 
 axiosInstance.interceptors.request.use((config) => {

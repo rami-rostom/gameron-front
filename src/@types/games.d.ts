@@ -38,7 +38,9 @@ export type Game = {
 };
 
 export type GameState = {
-  game: Game[];
+  game: {
+    results: Game[];
+  };
   isLoading: boolean;
   error: null | string;
 };

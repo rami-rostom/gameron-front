@@ -4,15 +4,18 @@ import { axiosInstance } from '../../utils/axios';
 import { GameState } from '@/@types/games';
 
 const initialState: GameState = {
-  game: [],
+  game: {
+    results: [],
+  },
   isLoading: true,
   error: null,
 };
 
 export const getGames = createAsyncThunk('getGames', async () => {
   const { data } = await axiosInstance.get(
-    `https://api.rawg.io/api/games?key=a5a7fbc9e170482d9ee362fb7881ce95&dates=2020-01-01,2024-12-31`
+    `/games?key=a5a7fbc9e170482d9ee362fb7881ce95&dates=2020-01-01,2024-12-31`
   );
+
   return data;
 });
 

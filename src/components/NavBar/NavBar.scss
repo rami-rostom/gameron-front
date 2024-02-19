@@ -1,0 +1,33 @@
+@use '../../styles/variables' as v;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: v.$pad;
+
+  &__nav {
+    display: flex;
+    align-items: baseline;
+    gap: v.$gap-xl;
+
+    &-logo {
+      font-family: Monoton;
+      font-size: 2rem;
+    }
+
+    &-link {
+      display: flex;
+      gap: v.$gap-lg;
+
+      &-item {
+        opacity: 70%;
+      }
+
+      &-item:hover {
+        opacity: 100%;
+        transition-duration: 500ms;
+      }
+    }
+  }
+}

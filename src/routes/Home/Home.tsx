@@ -3,6 +3,7 @@ import './Home.scss';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useEffect } from 'react';
 import { getGames } from '@/store/reducers/getGames';
+import { convertDateFormat } from '@/utils/calculation';
 
 function Home() {
   const dispatch = useAppDispatch();
@@ -12,12 +13,19 @@ function Home() {
   useEffect(() => {
     dispatch(getGames());
   }, [dispatch]);
-  console.log(gamesData);
 
   return (
     <>
       <div className="home">
-        <GameCard />
+        {gamesData.map((game) => (
+          <GameCard
+            key={game.id}
+            name={game.name}
+            genres={game.genres}
+            released={convertDateFormat(game.released)}
+            metacritic={game.metacritic}
+          />
+        ))}
       </div>
     </>
   );

@@ -12,14 +12,30 @@ import { ArrowRightCircle } from 'lucide-react';
 
 import './GameCard.scss';
 
-function GameCard() {
+type Genre = {
+  id: number;
+  name: string;
+};
+
+type GameProps = {
+  name: string;
+  genres: Genre[];
+  released: string;
+  metacritic: number;
+};
+
+function GameCard(props: GameProps) {
+  const { name, genres, released, metacritic } = props;
+
   return (
     <Card className="card">
       <div className="card__header">
-        <CardTitle className="card__header-title">Titre jeu</CardTitle>
+        <CardTitle className="card__header-title">{name}</CardTitle>
         <div className="card__header-info">
-          <Badge>Catégorie</Badge>
-          <CardDescription>jj/mm/aaaa</CardDescription>
+          {genres.slice(0, 3).map((genre) => (
+            <Badge key={genre.id}>{genre.name}</Badge>
+          ))}
+          <CardDescription>{released}</CardDescription>
         </div>
       </div>
       <CardContent>
@@ -35,7 +51,7 @@ function GameCard() {
             alt="Metacritic icon"
             className="card__footer-rate-icon"
           />
-          <p className="card__footer-rate-value">90</p>
+          <p className="card__footer-rate-value">{metacritic}</p>
         </div>
         <Link to={'#'} className="card__footer-more">
           <p className="card__footer-more-text">Plus d'infos</p>

@@ -21,6 +21,7 @@ export type Game = {
     slug: string;
     name: string;
   };
+  genres: [];
   platforms: [
     {
       platform: {

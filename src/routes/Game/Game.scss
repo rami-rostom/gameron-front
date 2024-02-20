@@ -1,0 +1,61 @@
+@use '../../styles/variables' as v;
+
+.game {
+  width: 80%;
+  margin: auto;
+
+  display: flex;
+
+  &__header {
+    width: 100%;
+
+    &-aside {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-genre {
+        display: flex;
+        gap: v.$gap-xs;
+      }
+
+      &-platform {
+        display: flex;
+        gap: v.$gap-xs;
+      }
+    }
+
+    &-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-title {
+        text-transform: uppercase;
+        font-size: v.$size-lg;
+      }
+
+      &-rate {
+        display: flex;
+        align-items: center;
+        gap: v.$gap-sm;
+
+        &-icon {
+          width: v.$size-lg;
+        }
+
+        &-value {
+          background-color: #51cb20;
+          color: hsl(var(--background));
+          padding: 0rem 0.2rem;
+          border-radius: 0.2rem;
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
+  // &__thumbnail {
+  //   width: 60%;
+  // }
+}

@@ -9,13 +9,16 @@ const initialState: OneGameState = {
   error: null,
 };
 
-export const getOneGame = createAsyncThunk('getOneGame', async (id: number) => {
-  const { data } = await axiosInstance.get(
-    `/games/${id}?key=a5a7fbc9e170482d9ee362fb7881ce95`
-  );
+export const getOneGame = createAsyncThunk(
+  'getOneGame',
+  async (slug: string) => {
+    const { data } = await axiosInstance.get(
+      `/games/${slug}?key=a5a7fbc9e170482d9ee362fb7881ce95`
+    );
 
-  return data;
-});
+    return data;
+  }
+);
 
 const getOneGameSlice = createSlice({
   name: 'getOneGame',

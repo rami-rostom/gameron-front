@@ -38,6 +38,7 @@
 
     &-rate {
       display: flex;
+      align-items: center;
       gap: v.$gap-sm;
 
       &-icon {

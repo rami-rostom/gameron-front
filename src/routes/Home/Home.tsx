@@ -4,7 +4,6 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import GameCard from '@/components/GameCard/GameCard';
 import { convertDateFormat } from '@/utils/calculation';
 import { getGames } from '@/store/reducers/getGames';
-import { getOneGame } from '@/store/reducers/getOneGame';
 
 import './Home.scss';
 

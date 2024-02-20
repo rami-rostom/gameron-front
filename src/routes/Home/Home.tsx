@@ -27,6 +27,7 @@ function Home() {
           <GameCard
             key={game.id}
             name={game.name}
+            slug={game.slug}
             genres={game.genres}
             released={convertDateFormat(game.released)}
             metacritic={game.metacritic}

@@ -19,6 +19,7 @@ type Genre = {
 
 type GameProps = {
   name: string;
+  slug: string;
   genres: Genre[];
   released: string;
   metacritic: number;
@@ -26,7 +27,7 @@ type GameProps = {
 };
 
 function GameCard(props: GameProps) {
-  const { name, genres, released, metacritic, thumbnail } = props;
+  const { name, slug, genres, released, metacritic, thumbnail } = props;
 
   return (
     <Card className="card">
@@ -51,7 +52,7 @@ function GameCard(props: GameProps) {
           />
           <p className="card__footer-rate-value">{metacritic}</p>
         </div>
-        <Link to={'#'} className="card__footer-more">
+        <Link to={`/game/${slug}`} className="card__footer-more">
           <p className="card__footer-more-text">Plus d'infos</p>
           <ArrowRightCircle className="card__footer-more-icon" />
         </Link>

@@ -10,6 +10,7 @@ export type Game = {
   ratings: {};
   ratings_count: number;
   reviews_text_count: string;
+  description: string;
   added: number;
   added_by_status: {};
   metacritic: number;
@@ -42,6 +43,12 @@ export type GameState = {
   game: {
     results: Game[];
   };
+  isLoading: boolean;
+  error: null | string;
+};
+
+export type OneGameState = {
+  game: Game[];
   isLoading: boolean;
   error: null | string;
 };

@@ -27,9 +27,8 @@
     }
   }
 
-  &__description {
-    font-size: v.$size-sm;
-    text-align: start;
+  &__thumbnail {
+    width: 40%;
   }
 
   &__footer {

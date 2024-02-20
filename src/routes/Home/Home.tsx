@@ -1,18 +1,24 @@
-import GameCard from '@/components/GameCard/GameCard';
-import './Home.scss';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { useEffect } from 'react';
-import { getGames } from '@/store/reducers/getGames';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+
+import GameCard from '@/components/GameCard/GameCard';
 import { convertDateFormat } from '@/utils/calculation';
+import { getGames } from '@/store/reducers/getGames';
+import { getOneGame } from '@/store/reducers/getOneGame';
+
+import './Home.scss';
 
 function Home() {
   const dispatch = useAppDispatch();
 
+  // Fetch and render all games data
   const gamesData = useAppSelector((state) => state.getGames.game.results);
 
   useEffect(() => {
     dispatch(getGames());
   }, [dispatch]);
+
+  console.log(gamesData);
 
   return (
     <>
@@ -24,6 +30,7 @@ function Home() {
             genres={game.genres}
             released={convertDateFormat(game.released)}
             metacritic={game.metacritic}
+            thumbnail={game.background_image}
           />
         ))}
       </div>

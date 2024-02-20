@@ -22,10 +22,11 @@ type GameProps = {
   genres: Genre[];
   released: string;
   metacritic: number;
+  thumbnail: string;
 };
 
 function GameCard(props: GameProps) {
-  const { name, genres, released, metacritic } = props;
+  const { name, genres, released, metacritic, thumbnail } = props;
 
   return (
     <Card className="card">
@@ -38,11 +39,8 @@ function GameCard(props: GameProps) {
           <CardDescription>{released}</CardDescription>
         </div>
       </div>
-      <CardContent>
-        <p className="card__description">
-          Lorem ipsum dolor sit amet consectetur. Tempor rhoncus quam nisl amet
-          amet tortor. Libero non vestibulum erat in luctus...{' '}
-        </p>
+      <CardContent className="card__thumbnail">
+        <img src={thumbnail} alt="Thumbnail" />
       </CardContent>
       <CardFooter className="card__footer">
         <div className="card__footer-rate">

@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
 import { getOneGame } from '@/store/reducers/getOneGame';
+import { convertDateFormat } from '@/utils/calculation';
 
 import './Game.scss';
 
@@ -56,45 +56,51 @@ function Game() {
             <CardTitle className="game__header-main-title">
               {gameData.name}
             </CardTitle>
-            <CardDescription className="game__header-main-rate">
-              <img
-                src="/icons/metacritic.svg"
-                alt="Metacritic icon"
-                className="game__header-main-rate-icon"
-              />
-              <span>Note Metacritic : </span>
-              <span className="game__header-main-rate-value">
-                {gameData.metacritic}
+            <CardDescription className="game__header-main-info">
+              {gameData.developers &&
+                gameData.developers.slice(0, 1).map((developer) => (
+                  <span
+                    key={developer.id}
+                    className="game__header-main-info-studio"
+                  >
+                    {developer.name}
+                  </span>
+                ))}
+
+              <span>|</span>
+
+              <span className="game__header-main-info-date">
+                {convertDateFormat(gameData.released)}
               </span>
             </CardDescription>
           </div>
         </CardHeader>
-      </Card>
 
-      {/* <Card className="game">
-        <div className="game__header">
-          <CardTitle className="game__header-title">{gameData.name}</CardTitle>
-          <div className="game__header-info">
-            {gameData.genres.slice(0, 3).map((genre) => (
-              <Badge key={genre.id}>{genre.name}</Badge>
-            ))}
-          </div>
-        </div>
-        <CardContent className="game__thumbnail">
-          <img src={gameData.background_image} alt="Thumbnail" />
-        </CardContent>
-        <CardFooter className="game__footer">
-          <CardDescription>{gameData.released}</CardDescription>
-          <div className="game__footer-rate">
+        <CardContent className="game__content">
+          <img
+            src={gameData.background_image}
+            alt={`Thumbnail ${gameData.name}`}
+            className="game__content-thumbnail"
+          />
+          <p className="game__content-description">
+            {gameData.description_raw}
+          </p>
+
+          <CardDescription className="game__content-rate">
             <img
               src="/icons/metacritic.svg"
               alt="Metacritic icon"
-              className="game__footer-rate-icon"
+              className="game__content-rate-icon"
             />
-            <p className="game__footer-rate-value">{gameData.metacritic}</p>
-          </div>
-        </CardFooter>
-      </Card> */}
+            <Link to={gameData.metacritic_url} target="_blank">
+              Note Metacritic{' '}
+            </Link>
+            <span className="game__content-rate-value">
+              {gameData.metacritic}
+            </span>
+          </CardDescription>
+        </CardContent>
+      </Card>
     </>
   );
 }

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
-import GameCard from '@/components/GameCard/GameCard';
 import { convertDateFormat } from '@/utils/calculation';
+import GameCard from '@/components/GameCard/GameCard';
 import { getGames } from '@/store/reducers/getGames';
 
 import './Home.scss';

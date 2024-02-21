@@ -4,7 +4,9 @@
  * @returns date in new format
  */
 export const convertDateFormat = (oldFormatDate: string) => {
-  const [year, month, day] = oldFormatDate.split('-');
-  const newFormatDate = `${day}-${month}-${year}`;
-  return newFormatDate;
+  if (oldFormatDate) {
+    const [year, month, day] = oldFormatDate.split('-');
+    const newFormatDate = `${day}-${month}-${year}`;
+    return newFormatDate;
+  }
 };

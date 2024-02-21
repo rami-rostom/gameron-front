@@ -11,6 +11,8 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+import { Link as LinkIcon } from 'lucide-react';
+
 import { getOneGame } from '@/store/reducers/getOneGame';
 import { convertDateFormat } from '@/utils/calculation';
 
@@ -92,12 +94,25 @@ function Game() {
               alt="Metacritic icon"
               className="game__content-rate-icon"
             />
-            <Link to={gameData.metacritic_url} target="_blank">
+            <Link
+              to={gameData.metacritic_url}
+              target="_blank"
+              className="game__content-rate-link"
+            >
               Note Metacritic{' '}
             </Link>
             <span className="game__content-rate-value">
               {gameData.metacritic}
             </span>
+            <span>|</span>
+            <LinkIcon size={14} />
+            <Link
+              to={gameData.website}
+              target="_blank"
+              className="game__content-rate-link"
+            >
+              Site officiel
+            </Link>
           </CardDescription>
         </CardContent>
       </Card>

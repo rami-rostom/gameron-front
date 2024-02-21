@@ -11,18 +11,32 @@ export type Game = {
   ratings_count: number;
   reviews_text_count: string;
   description: string;
+  description_raw: string;
   added: number;
   added_by_status: {};
   metacritic: number;
+  metacritic_url: string;
   playtime: number;
   suggestions_count: number;
   updated: string;
+  website: string;
   esrb_rating: {
     id: number;
     slug: string;
     name: string;
   };
-  genres: [];
+  genres: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
+  developers: [
+    {
+      id: number;
+      name: string;
+    }
+  ];
   platforms: [
     {
       platform: {
@@ -48,7 +62,7 @@ export type GameState = {
 };
 
 export type OneGameState = {
-  game: Game[];
+  game: Game;
   isLoading: boolean;
   error: null | string;
 };

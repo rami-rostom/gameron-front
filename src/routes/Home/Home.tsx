@@ -17,8 +17,6 @@ function Home() {
     dispatch(getGames());
   }, [dispatch]);
 
-  console.log(gamesData);
-
   return (
     <>
       <div className="home">

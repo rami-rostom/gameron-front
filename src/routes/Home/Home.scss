@@ -1,1 +1,10 @@
 @use '../../styles/variables' as v;
+
+.home {
+  margin: v.$gap-xl 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: v.$gap-lg;
+}

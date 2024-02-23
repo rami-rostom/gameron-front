@@ -71,9 +71,11 @@ function Game() {
 
               <span>|</span>
 
-              <span className="game__header-main-info-date">
-                {convertDateFormat(gameData.released)}
-              </span>
+              {gameData.released && (
+                <span className="game__header-main-info-date">
+                  {convertDateFormat(gameData.released)}
+                </span>
+              )}
             </CardDescription>
           </div>
         </CardHeader>

@@ -7,6 +7,7 @@
 
   &__header {
     display: flex;
+    align-items: center;
 
     &-title {
       text-transform: uppercase;
@@ -19,7 +20,9 @@
   }
 
   &__info {
-    margin: v.$gap-sm 0;
+    margin-top: v.$gap-sm;
+    font-size: v.$size-sm;
+    opacity: 80%;
 
     display: flex;
     justify-content: center;

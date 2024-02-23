@@ -44,7 +44,7 @@ function GameCard(props: GameProps) {
         </Link>
       </div>
 
-      <CardDescription className="card__info">
+      <CardContent className="card__info">
         <div className="card__info-rate">
           <img
             src="/icons/metacritic.svg"
@@ -59,7 +59,7 @@ function GameCard(props: GameProps) {
           <CalendarCheck2 size={14} />
           <div>{released}</div>
         </span>
-      </CardDescription>
+      </CardContent>
 
       <CardFooter className="card__footer">
         <div className="card__footer-tag">

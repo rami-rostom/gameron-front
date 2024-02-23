@@ -5,10 +5,11 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
+  CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRightCircle } from 'lucide-react';
+import { ArrowRightCircle, CalendarCheck2 } from 'lucide-react';
 
 import './GameCard.scss';
 
@@ -31,27 +32,42 @@ function GameCard(props: GameProps) {
 
   return (
     <Card className="card">
-      <div className="card__header">
-        <CardTitle className="card__header-title">{name}</CardTitle>
-        <div className="card__header-info">
-          {genres.slice(0, 3).map((genre) => (
-            <Badge key={genre.id}>{genre.name}</Badge>
-          ))}
-          <CardDescription>{released}</CardDescription>
-        </div>
+      <CardHeader className="card__header">
+        <Link to={`/game/${slug}`}>
+          <CardTitle className="card__header-title">{name}</CardTitle>
+        </Link>
+      </CardHeader>
+
+      <div className="card__thumbnail">
+        <Link to={`/game/${slug}`}>
+          <img src={thumbnail} alt="Thumbnail" />
+        </Link>
       </div>
-      <CardContent className="card__thumbnail">
-        <img src={thumbnail} alt="Thumbnail" />
-      </CardContent>
-      <CardFooter className="card__footer">
-        <div className="card__footer-rate">
+
+      <CardDescription className="card__info">
+        <div className="card__info-rate">
           <img
             src="/icons/metacritic.svg"
             alt="Metacritic icon"
-            className="card__footer-rate-icon"
+            className="card__info-rate-icon"
           />
-          <p className="card__footer-rate-value">{metacritic}</p>
+          <span>Metacritic :</span>
+          <p className="card__info-rate-value">{metacritic}</p>
         </div>
+        <span>|</span>
+        <span className="card__info-date">
+          <CalendarCheck2 size={14} />
+          <div>{released}</div>
+        </span>
+      </CardDescription>
+
+      <CardFooter className="card__footer">
+        <div className="card__footer-tag">
+          {genres.slice(0, 3).map((genre) => (
+            <Badge key={genre.id}>{genre.name}</Badge>
+          ))}
+        </div>
+
         <Link to={`/game/${slug}`} className="card__footer-more">
           <p className="card__footer-more-text">Plus d'infos</p>
           <ArrowRightCircle className="card__footer-more-icon" />

@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Rating from '@mui/material/Rating';
 import { ArrowRightCircle, CalendarCheck2 } from 'lucide-react';
 
 import './GameCard.scss';
@@ -22,12 +23,12 @@ type GameProps = {
   slug: string;
   genres: Genre[];
   released: string;
-  metacritic: number;
+  rating: number;
   thumbnail: string;
 };
 
 function GameCard(props: GameProps) {
-  const { name, slug, genres, released, metacritic, thumbnail } = props;
+  const { name, slug, genres, released, rating, thumbnail } = props;
 
   return (
     <Card className="card">
@@ -44,20 +45,23 @@ function GameCard(props: GameProps) {
       </div>
 
       <CardContent className="card__info">
-        <div className="card__info-rate">
-          <img
-            src="/icons/metacritic.svg"
-            alt="Metacritic icon"
-            className="card__info-rate-icon"
-          />
-          <span>Metacritic :</span>
-          <p className="card__info-rate-value">{metacritic}</p>
-        </div>
-        <span>|</span>
         <span className="card__info-date">
           <CalendarCheck2 size={14} />
           <div>{released}</div>
         </span>
+
+        <span>|</span>
+
+        <div className="card__info-rate">
+          <span>Note :</span>
+          <Rating
+            name="half-rating-read"
+            size="small"
+            value={rating}
+            precision={0.5}
+            readOnly
+          />
+        </div>
       </CardContent>
 
       <CardFooter className="card__footer">

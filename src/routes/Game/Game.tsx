@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Rating from '@mui/material/Rating';
 
 import { Link as LinkIcon } from 'lucide-react';
 
@@ -91,22 +92,6 @@ function Game() {
           </p>
 
           <CardDescription className="game__content-rate">
-            <img
-              src="/icons/metacritic.svg"
-              alt="Metacritic icon"
-              className="game__content-rate-icon"
-            />
-            <Link
-              to={gameData.metacritic_url}
-              target="_blank"
-              className="game__content-rate-link"
-            >
-              Note Metacritic{' '}
-            </Link>
-            <span className="game__content-rate-value">
-              {gameData.metacritic}
-            </span>
-            <span>|</span>
             <LinkIcon size={14} />
             <Link
               to={gameData.website}
@@ -115,6 +100,36 @@ function Game() {
             >
               Site officiel
             </Link>
+
+            <span>|</span>
+
+            {gameData.metacritic && (
+              <>
+                <img
+                  src="/icons/metacritic.svg"
+                  alt="Metacritic icon"
+                  className="game__content-rate-icon"
+                />
+                <Link
+                  to={gameData.metacritic_url}
+                  target="_blank"
+                  className="game__content-rate-link"
+                >
+                  Note Metacritic{' '}
+                </Link>
+                <span className="game__content-rate-value">
+                  {gameData.metacritic}
+                </span>
+                <span>|</span>
+              </>
+            )}
+            <Rating
+              name="half-rating-read"
+              size="small"
+              value={gameData.rating}
+              precision={0.5}
+              readOnly
+            />
           </CardDescription>
         </CardContent>
       </Card>

@@ -57,7 +57,7 @@ function Home() {
             slug={game.slug}
             genres={game.genres}
             released={convertDateFormat(game.released)}
-            metacritic={game.rating}
+            rating={game.rating}
             thumbnail={game.background_image}
           />
         ))}

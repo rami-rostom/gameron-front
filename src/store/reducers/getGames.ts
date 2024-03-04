@@ -11,9 +11,13 @@ const initialState: GameState = {
   error: null,
 };
 
-export const getGames = createAsyncThunk('getGames', async () => {
+const RAWG_KEY = import.meta.env.VITE_RAWG_KEY;
+
+const todayDate = new Date().toJSON().slice(0, 10);
+
+export const getGames = createAsyncThunk('getGames', async (page: number) => {
   const { data } = await axiosInstance.get(
-    `/games?key=a5a7fbc9e170482d9ee362fb7881ce95&dates=2020-01-01,2024-12-31`
+    `/games?key=${RAWG_KEY}&page=${page}&dates=2023-01-01,${todayDate}&ordering=-add`
   );
 
   return data;

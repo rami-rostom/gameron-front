@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import getGamesReducer from './reducers/getGames';
 import getOneGameReducer from './reducers/getOneGame';
+import searchGamesReducer from './reducers/searchGames';
 
 const store = configureStore({
   reducer: {
     getGames: getGamesReducer,
     getOneGame: getOneGameReducer,
+    searchGames: searchGamesReducer,
   },
 });
 

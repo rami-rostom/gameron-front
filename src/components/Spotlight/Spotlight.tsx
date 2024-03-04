@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   CommandDialog,
@@ -8,10 +9,17 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-
 import { Button } from '@/components/ui/button';
 
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { searchGames } from '@/store/reducers/searchGames';
+import { Search } from 'lucide-react';
+
+import './Spotlight.scss';
+
 function Spotlight() {
+  const dispatch = useAppDispatch();
+
   const [open, setOpen] = useState(false);
 
   const handleOpenSpotlight = () => {
@@ -29,11 +37,27 @@ function Spotlight() {
     return () => document.removeEventListener('keydown', down);
   }, []);
 
+  const searchData = useAppSelector((state) => state.searchGames.game.results);
+
+  // Handle search feature
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    dispatch(searchGames(searchValue));
+  }, [dispatch, searchValue]);
+
+  const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
+
   return (
     <>
       <p className="text-sm text-muted-foreground">
         <Button variant="outline" onClick={handleOpenSpotlight}>
-          Rechercher un jeu...{' '}
+          <div className="search-bar">
+            <Search size={14} />
+            Rechercher un jeu...{' '}
+          </div>
           <kbd className="pointer-events-none ml-5 inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
             <span className="text-xs">⌘</span>K
           </kbd>
@@ -41,13 +65,25 @@ function Spotlight() {
       </p>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Réaliser votre recherche..." />
+        <CommandInput
+          value={searchValue}
+          onChangeCapture={handleChangeValue}
+          placeholder="Votre recherche..."
+        />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>Game 1</CommandItem>
-            <CommandItem>Game 2</CommandItem>
-            <CommandItem>Game 3</CommandItem>
+            {searchData
+              ? searchData.slice(0, 5).map((game) => (
+                  <Link
+                    key={game.id}
+                    to={`/game/${game.slug}`}
+                    onClick={() => setOpen(false)}
+                  >
+                    <CommandItem>{game.name}</CommandItem>
+                  </Link>
+                ))
+              : []}
           </CommandGroup>
         </CommandList>
       </CommandDialog>

@@ -1,0 +1,7 @@
+@use '../../styles/variables' as v;
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: v.$gap-sm;
+}

@@ -101,10 +101,9 @@ function Game() {
               Site officiel
             </Link>
 
-            <span>|</span>
-
             {gameData.metacritic && (
               <>
+                <span>|</span>
                 <img
                   src="/icons/metacritic.svg"
                   alt="Metacritic icon"
@@ -120,16 +119,21 @@ function Game() {
                 <span className="game__content-rate-value">
                   {gameData.metacritic}
                 </span>
-                <span>|</span>
               </>
             )}
-            <Rating
-              name="half-rating-read"
-              size="small"
-              value={gameData.rating}
-              precision={0.5}
-              readOnly
-            />
+
+            {gameData.rating && (
+              <>
+                <span>|</span>
+                <Rating
+                  name="half-rating-read"
+                  size="small"
+                  value={gameData.rating}
+                  precision={0.5}
+                  readOnly
+                />
+              </>
+            )}
           </CardDescription>
         </CardContent>
       </Card>

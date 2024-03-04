@@ -10,7 +10,9 @@ function NavBar() {
     <>
       <header className="header">
         <div className="header__nav">
-          <div className="header__nav-logo">gameron</div>
+          <NavLink to={'/'} className="header__nav-logo">
+            gameron
+          </NavLink>
           <div className="header__nav-link">
             <NavLink to={'/'} className="header__nav-link-item">
               Accueil

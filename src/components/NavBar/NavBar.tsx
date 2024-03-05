@@ -1,4 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+
+import { CircleUserRound } from 'lucide-react';
+import { Button } from '../ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 import ToggleMode from '../ToggleMode/ToggleMode';
 import Spotlight from '../Spotlight/Spotlight';
@@ -29,6 +38,20 @@ function NavBar() {
         <div className="header__aside">
           <Spotlight />
           <ToggleMode />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon">
+                <CircleUserRound size={20} />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <Link to={'/login'}>
+                <DropdownMenuItem>Connexion</DropdownMenuItem>
+              </Link>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </header>
     </>

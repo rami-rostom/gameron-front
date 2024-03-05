@@ -1,0 +1,37 @@
+@use '../../styles/variables' as v;
+
+.login {
+  height: 90vh;
+  padding: calc(v.$pad * 2);
+
+  display: flex;
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: calc(v.$pad * 2);
+
+    &-title {
+      font-family: Monoton;
+      font-size: v.$size-xxl;
+    }
+
+    &-subtitle {
+      font-size: v.$size-sm;
+      color: hsl(var(--muted-foreground));
+    }
+  }
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.side {
+  width: 50%;
+}

@@ -30,7 +30,7 @@ function Profile() {
     navigate('/');
     toast({
       title: 'Déconnexion',
-      description: 'Vous êtes maintenant déconnecté !',
+      description: 'Vous êtes maintenant déconnecté(e) !',
     });
   };
 

@@ -63,6 +63,9 @@ const initialState: OneGameState = {
   error: null,
 };
 
+// Import API key form env file
+const RAWG_KEY = import.meta.env.VITE_RAWG_KEY;
+
 const axiosInstance = axios.create({
   baseURL: 'https://api.rawg.io/api/',
 });
@@ -70,9 +73,7 @@ const axiosInstance = axios.create({
 export const getOneGame = createAsyncThunk(
   'getOneGame',
   async (slug: string) => {
-    const { data } = await axiosInstance.get(
-      `/games/${slug}?key=a5a7fbc9e170482d9ee362fb7881ce95`
-    );
+    const { data } = await axiosInstance.get(`/games/${slug}?key=${RAWG_KEY}`);
 
     return data;
   }

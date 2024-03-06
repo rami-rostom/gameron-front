@@ -32,7 +32,7 @@ export const initialState: LoginState = {
 export const login = createAsyncThunk(
   'user/login',
   async (credentials: LoginCredentials) => {
-    const { data } = await axiosInstance.post<UserData>('/signin', credentials);
+    const { data } = await axiosInstance.post<UserData>('/login', credentials);
 
     LocalStorage.setItem('user', data);
 

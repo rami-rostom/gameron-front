@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
+import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../utils/axios';
 import { GameState } from '@/@types/games';
 
 const initialState: GameState = {
@@ -11,7 +11,12 @@ const initialState: GameState = {
   error: null,
 };
 
+// Import API key form env file
 const RAWG_KEY = import.meta.env.VITE_RAWG_KEY;
+
+const axiosInstance = axios.create({
+  baseURL: 'https://api.rawg.io/api/',
+});
 
 export const searchGames = createAsyncThunk(
   'searchGames',

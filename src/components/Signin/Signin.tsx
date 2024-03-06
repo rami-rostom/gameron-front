@@ -1,4 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '@/hooks/redux';
 
 import { TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -13,7 +15,12 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
+import { login } from '@/store/reducers/login';
+
 function Signin() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
 
@@ -30,8 +37,14 @@ function Signin() {
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log(emailValue);
-    console.log(passwordValue);
+    dispatch(
+      login({
+        email: emailValue,
+        password: passwordValue,
+      })
+    );
+
+    navigate('/');
   };
 
   return (

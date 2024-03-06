@@ -1,14 +1,14 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '@/hooks/redux';
 
 import ToggleMode from '../ToggleMode/ToggleMode';
 import Spotlight from '../Spotlight/Spotlight';
 import Profile from '../Profile/Profile';
 
 import './NavBar.scss';
-import { useState } from 'react';
 
 function NavBar() {
-  const [isLogged, setIsLogged] = useState(false);
+  const isLogged = useAppSelector((state) => state.login.logged);
 
   return (
     <>

@@ -46,7 +46,7 @@ function Profile() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel className="capitalize">
-              Hello {username}
+              Hello {username} !
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleLogout}>

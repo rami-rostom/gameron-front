@@ -6,6 +6,7 @@ import { TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useToast } from '../ui/use-toast';
 import {
   Card,
   CardContent,
@@ -23,6 +24,8 @@ function Signin() {
 
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
+
+  const { toast } = useToast();
 
   const handleEmailValue = (event: ChangeEvent<HTMLInputElement>) => {
     const email = event.target.value;
@@ -45,6 +48,12 @@ function Signin() {
     );
 
     navigate('/');
+
+    toast({
+      title: 'Connexion réussie',
+      description:
+        'Vous pouvez maintenant profiter des fonctionnalités de Gameron !',
+    });
   };
 
   return (

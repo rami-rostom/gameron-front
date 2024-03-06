@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { logout } from '@/store/reducers/login';
+import { useToast } from '../ui/use-toast';
 
 function Profile() {
   const dispatch = useAppDispatch();
@@ -21,10 +22,16 @@ function Profile() {
   const isLogged = useAppSelector((state) => state.login.logged);
   const username = useAppSelector((state) => state.login.data.username);
 
+  const { toast } = useToast();
+
   // Function to empty local storage and to disconnect user
   const handleLogout = () => {
     dispatch(logout());
     navigate('/');
+    toast({
+      title: 'Déconnexion',
+      description: 'Vous êtes maintenant déconnecté !',
+    });
   };
 
   return (

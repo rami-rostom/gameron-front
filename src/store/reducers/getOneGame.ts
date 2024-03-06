@@ -1,13 +1,71 @@
 /* eslint-disable import/prefer-default-export */
+import axios from 'axios';
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../utils/axios';
 import { OneGameState } from '@/@types/games';
 
 const initialState: OneGameState = {
-  game: [],
+  game: {
+    id: 0,
+    slug: '',
+    name: '',
+    released: '',
+    tba: false,
+    background_image: '',
+    rating: 0,
+    rating_top: 0,
+    ratings: {},
+    ratings_count: 0,
+    reviews_text_count: '',
+    description: '',
+    description_raw: '',
+    added: 0,
+    added_by_status: {},
+    metacritic: 0,
+    metacritic_url: '',
+    playtime: 0,
+    suggestions_count: 0,
+    updated: '',
+    website: '',
+    esrb_rating: {
+      id: 0,
+      slug: '',
+      name: '',
+    },
+    genres: [
+      {
+        id: 0,
+        name: '',
+      },
+    ],
+    developers: [
+      {
+        id: 0,
+        name: '',
+      },
+    ],
+    platforms: [
+      {
+        platform: {
+          id: 0,
+          slug: '',
+          name: '',
+        },
+        released_at: '',
+        requirements: {
+          minimum: '',
+          recommended: '',
+        },
+      },
+    ],
+  },
   isLoading: true,
   error: null,
 };
+
+const axiosInstance = axios.create({
+  baseURL: 'https://api.rawg.io/api/',
+});
 
 export const getOneGame = createAsyncThunk(
   'getOneGame',

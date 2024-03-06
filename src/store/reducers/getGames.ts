@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
+import axios from 'axios';
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { axiosInstance } from '../../utils/axios';
 import { GameState } from '@/@types/games';
 
 const initialState: GameState = {
@@ -11,9 +12,15 @@ const initialState: GameState = {
   error: null,
 };
 
+// Import API key form env file
 const RAWG_KEY = import.meta.env.VITE_RAWG_KEY;
 
+// Get today date in format YYYY-MM-DD
 const todayDate = new Date().toJSON().slice(0, 10);
+
+const axiosInstance = axios.create({
+  baseURL: 'https://api.rawg.io/api/',
+});
 
 export const getGames = createAsyncThunk('getGames', async (page: number) => {
   const { data } = await axiosInstance.get(

@@ -10,7 +10,7 @@ function Login() {
     <>
       <div className="login">
         <div className="login__intro side">
-          <h1 className="login__intro-title">Gameron</h1>
+          <h1 className="login__intro-title">Gamerón</h1>
           <p className="login__intro-subtitle">
             Votre espace pour vos jeux préférés
           </p>

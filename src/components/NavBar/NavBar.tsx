@@ -16,7 +16,7 @@ function NavBar() {
         <header className="header">
           <div className="header__nav">
             <NavLink to={'/'} className="header__nav-logo">
-              gameron
+              Gamerón
             </NavLink>
             <div className="header__nav-link">
               <NavLink to={'/'} className="header__nav-link-item">
@@ -41,7 +41,7 @@ function NavBar() {
         <header className="header">
           <div className="header__nav">
             <NavLink to={'/'} className="header__nav-logo">
-              gameron
+              Gamerón
             </NavLink>
           </div>
 

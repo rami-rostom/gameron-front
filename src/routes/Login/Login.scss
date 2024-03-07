@@ -15,8 +15,9 @@
     margin-right: calc(v.$pad * 2);
 
     &-title {
-      font-family: Monoton;
+      font-family: 'Anta', sans-serif;
       font-size: v.$size-xxl;
+      color: hsl(var(--title));
     }
 
     &-subtitle {

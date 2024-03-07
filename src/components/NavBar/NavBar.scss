@@ -4,9 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  border-bottom: 1px solid hsl(var(--border));
 
+  border-bottom: 1px solid hsl(var(--border));
   padding: calc(v.$pad / 2) v.$pad;
+  color: hsl(var(--title));
 
   &__nav {
     display: flex;
@@ -14,9 +15,8 @@
     gap: v.$gap-xl;
 
     &-logo {
-      font-family: Monoton;
+      font-family: 'Anta', sans-serif;
       font-size: v.$size-lg;
-      color: hsl(var(--title));
     }
 
     &-link {

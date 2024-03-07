@@ -8,10 +8,11 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ArrowRightCircle, CalendarCheck2, Heart } from 'lucide-react';
 import Rating from '@mui/material/Rating';
-import { ArrowRightCircle, CalendarCheck2 } from 'lucide-react';
 
 import './GameCard.scss';
+import { ChangeEvent } from 'react';
 
 type Genre = {
   id: number;
@@ -30,12 +31,20 @@ type GameProps = {
 function GameCard(props: GameProps) {
   const { name, slug, genres, released, rating, thumbnail } = props;
 
+  const handleLike = () => {
+    console.log('click');
+  };
+
   return (
     <Card className="card">
       <CardHeader className="card__header">
         <Link to={`/game/${slug}`}>
           <CardTitle className="card__header-title">{name}</CardTitle>
         </Link>
+
+        <button onClick={handleLike}>
+          <Heart size={18} />
+        </button>
       </CardHeader>
 
       <div className="card__thumbnail">

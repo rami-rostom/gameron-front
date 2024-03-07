@@ -66,3 +66,13 @@ export type OneGameState = {
   isLoading: boolean;
   error: null | string;
 };
+
+export type FavoriteGameState = {
+  games: {
+    id: number;
+    userId: number;
+    gameId: number;
+  };
+  isLoading: boolean;
+  error: null | string;
+};

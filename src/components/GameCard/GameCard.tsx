@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 import {
   Card,
@@ -12,7 +13,8 @@ import { ArrowRightCircle, CalendarCheck2, Heart } from 'lucide-react';
 import Rating from '@mui/material/Rating';
 
 import './GameCard.scss';
-import { ChangeEvent } from 'react';
+import { getFavoriteGames } from '@/store/reducers/getFavoriteGames';
+import { useEffect } from 'react';
 
 type Genre = {
   id: number;
@@ -29,11 +31,20 @@ type GameProps = {
 };
 
 function GameCard(props: GameProps) {
+  const dispatch = useAppDispatch();
+
   const { name, slug, genres, released, rating, thumbnail } = props;
+
+  const userId = useAppSelector((state) => state.login.data.userId);
+  const favoriteGames = useAppSelector((state) => state.favoriteGames.games);
 
   const handleLike = () => {
     console.log('click');
   };
+
+  // useEffect(() => {
+  //   dispatch(getFavoriteGames(userId));
+  // }, [dispatch, userId]);
 
   return (
     <Card className="card">

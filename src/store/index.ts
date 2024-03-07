@@ -5,6 +5,7 @@ import registerReducer from './reducers/register';
 import getGamesReducer from './reducers/getGames';
 import getOneGameReducer from './reducers/getOneGame';
 import searchGamesReducer from './reducers/searchGames';
+import favoriteGamesReducer from './reducers/getFavoriteGames';
 
 const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ const store = configureStore({
     getGames: getGamesReducer,
     getOneGame: getOneGameReducer,
     searchGames: searchGamesReducer,
+    favoriteGames: favoriteGamesReducer,
   },
 });
 

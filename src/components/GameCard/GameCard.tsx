@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
 import {
@@ -14,7 +14,8 @@ import Rating from '@mui/material/Rating';
 
 import './GameCard.scss';
 import { getFavoriteGames } from '@/store/reducers/getFavoriteGames';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { updateFavoriteGame } from '@/store/reducers/updateFavoriteGame';
 
 type Genre = {
   id: number;
@@ -22,6 +23,7 @@ type Genre = {
 };
 
 type GameProps = {
+  id: number;
   name: string;
   slug: string;
   genres: Genre[];
@@ -31,20 +33,37 @@ type GameProps = {
 };
 
 function GameCard(props: GameProps) {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const { name, slug, genres, released, rating, thumbnail } = props;
+  const { id, name, slug, genres, released, rating, thumbnail } = props;
 
-  // const userId = useAppSelector((state) => state.login.data.userId);
-  // const favoriteGames = useAppSelector((state) => state.favoriteGames.games);
+  const userId = useAppSelector((state) => state.login.data.userId);
+  const favoriteGames = useAppSelector((state) => state.favoriteGames.game);
 
-  const handleLike = () => {
-    console.log('click');
+  const isGameLiked = Object.values(favoriteGames).some(
+    (game) => game.gameId === id
+  );
+
+  const handleLikeGame = () => {
+    dispatch(
+      updateFavoriteGame({
+        userId,
+        gameId: id,
+        name,
+        slug,
+        released,
+        rating,
+        background_image: thumbnail,
+      })
+    );
+
+    navigate(0);
   };
 
-  // useEffect(() => {
-  //   dispatch(getFavoriteGames(userId));
-  // }, [dispatch, userId]);
+  useEffect(() => {
+    dispatch(getFavoriteGames(userId));
+  }, [dispatch, userId]);
 
   return (
     <Card className="card">
@@ -53,8 +72,12 @@ function GameCard(props: GameProps) {
           <CardTitle className="card__header-title">{name}</CardTitle>
         </Link>
 
-        <button onClick={handleLike}>
-          <Heart size={18} />
+        <button onClick={handleLikeGame}>
+          {isGameLiked ? (
+            <Heart fill="hsl(var(--title))" size={18} />
+          ) : (
+            <Heart size={18} />
+          )}
         </button>
       </CardHeader>
 

@@ -53,6 +53,7 @@ function Home() {
         {gamesData.map((game) => (
           <GameCard
             key={game.id}
+            id={game.id}
             name={game.name}
             slug={game.slug}
             genres={game.genres}

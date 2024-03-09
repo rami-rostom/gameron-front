@@ -1,5 +1,6 @@
 export type Game = {
   id: number;
+  userId: number;
   slug: string;
   name: string;
   released: string;
@@ -67,17 +68,18 @@ export type OneGameState = {
   error: null | string;
 };
 
+export type FavoriteGame = {
+  userId: number;
+  gameId: any;
+  name: string;
+  slug: string;
+  released: string;
+  rating: number;
+  background_image: string;
+};
+
 export type FavoriteGameState = {
-  game: {
-    id: number;
-    userId: number;
-    gameId: number;
-    name: string;
-    slug: string;
-    released: string;
-    rating: number;
-    background_image: string;
-  };
+  game: FavoriteGame;
   isLoading: boolean;
   error: null | string;
 };

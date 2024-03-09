@@ -5,7 +5,6 @@ import { FavoriteGameState } from '@/@types/games';
 
 const initialState: FavoriteGameState = {
   game: {
-    id: 0,
     userId: 0,
     gameId: 0,
     name: '',

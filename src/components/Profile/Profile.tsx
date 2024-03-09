@@ -27,7 +27,7 @@ function Profile() {
   // Function to empty local storage and to disconnect user
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/');
+    navigate(0);
     toast({
       title: 'Déconnexion',
       description: 'Vous êtes maintenant déconnecté(e) !',

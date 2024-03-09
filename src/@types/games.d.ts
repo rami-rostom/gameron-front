@@ -68,10 +68,15 @@ export type OneGameState = {
 };
 
 export type FavoriteGameState = {
-  games: {
+  game: {
     id: number;
     userId: number;
     gameId: number;
+    name: string;
+    slug: string;
+    released: string;
+    rating: number;
+    background_image: string;
   };
   isLoading: boolean;
   error: null | string;

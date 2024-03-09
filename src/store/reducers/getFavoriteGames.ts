@@ -4,10 +4,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { FavoriteGameState } from '@/@types/games';
 
 const initialState: FavoriteGameState = {
-  games: {
+  game: {
     id: 0,
     userId: 0,
     gameId: 0,
+    name: '',
+    slug: '',
+    released: '',
+    rating: 0,
+    background_image: '',
   },
   isLoading: true,
   error: null,
@@ -33,7 +38,7 @@ const getFavoriteGamesSlice = createSlice({
       })
       .addCase(getFavoriteGames.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.games = action.payload;
+        state.game = action.payload;
       });
   },
 });

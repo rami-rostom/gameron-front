@@ -31,12 +31,12 @@ type GameProps = {
 };
 
 function GameCard(props: GameProps) {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const { name, slug, genres, released, rating, thumbnail } = props;
 
-  const userId = useAppSelector((state) => state.login.data.userId);
-  const favoriteGames = useAppSelector((state) => state.favoriteGames.games);
+  // const userId = useAppSelector((state) => state.login.data.userId);
+  // const favoriteGames = useAppSelector((state) => state.favoriteGames.games);
 
   const handleLike = () => {
     console.log('click');

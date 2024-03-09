@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 
@@ -12,10 +13,10 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRightCircle, CalendarCheck2, Heart } from 'lucide-react';
 import Rating from '@mui/material/Rating';
 
-import './GameCard.scss';
 import { getFavoriteGames } from '@/store/reducers/getFavoriteGames';
-import { useEffect, useState } from 'react';
 import { updateFavoriteGame } from '@/store/reducers/updateFavoriteGame';
+
+import './GameCard.scss';
 
 type Genre = {
   id: number;
@@ -67,18 +68,20 @@ function GameCard(props: GameProps) {
 
   return (
     <Card className="card">
-      <CardHeader className="card__header">
-        <Link to={`/game/${slug}`}>
-          <CardTitle className="card__header-title">{name}</CardTitle>
-        </Link>
+      <CardHeader>
+        <div className="card__header">
+          <Link to={`/game/${slug}`}>
+            <CardTitle className="card__header-title">{name}</CardTitle>
+          </Link>
 
-        <button onClick={handleLikeGame}>
-          {isGameLiked ? (
-            <Heart fill="hsl(var(--title))" size={18} />
-          ) : (
-            <Heart size={18} />
-          )}
-        </button>
+          <button onClick={handleLikeGame}>
+            {isGameLiked ? (
+              <Heart fill="hsl(var(--title))" size={18} />
+            ) : (
+              <Heart size={18} />
+            )}
+          </button>
+        </div>
       </CardHeader>
 
       <div className="card__thumbnail">

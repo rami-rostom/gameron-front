@@ -4,6 +4,7 @@ import Root from './routes/Root/Root';
 import Home from './routes/Home/Home';
 import Game from './routes/Game/Game';
 import Login from './routes/Login/Login';
+import Favorite from './routes/Favorite/Favorite';
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: '/game/:slug',
         element: <Game />,
+      },
+      {
+        path: '/game/favorite',
+        element: <Favorite />,
       },
     ],
   },

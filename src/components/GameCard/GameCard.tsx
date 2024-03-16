@@ -58,7 +58,6 @@ function GameCard(props: GameProps) {
         background_image: thumbnail,
       })
     );
-
     navigate(0);
   };
 

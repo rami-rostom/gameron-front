@@ -22,7 +22,7 @@ function NavBar() {
               <NavLink to={'/'} className="header__nav-link-item">
                 Accueil
               </NavLink>
-              <NavLink to={'#'} className="header__nav-link-item">
+              <NavLink to={'/game/favorite'} className="header__nav-link-item">
                 Mes jeux
               </NavLink>
               <NavLink to={'#'} className="header__nav-link-item">

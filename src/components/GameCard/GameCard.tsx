@@ -69,8 +69,8 @@ function GameCard(props: GameProps) {
     <Card className="card">
       <CardHeader>
         <div className="card__header">
-          <Link to={`/game/${slug}`}>
-            <CardTitle className="card__header-title">{name}</CardTitle>
+          <Link to={`/game/${slug}`} className="card__header-title">
+            <CardTitle>{name}</CardTitle>
           </Link>
 
           <button onClick={handleLikeGame}>

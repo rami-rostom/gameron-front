@@ -2,7 +2,6 @@
 
 .home {
   margin: v.$gap-xl 0;
-  padding: v.$gap-md 0;
 
   display: flex;
   flex-direction: column;
@@ -10,8 +9,7 @@
   gap: v.$gap-lg;
 
   &__title {
-    font-family: 'Sora', sans-serif;
-    font-size: v.$size-lg;
+    font-size: v.$size-mdlg;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;

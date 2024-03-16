@@ -7,7 +7,6 @@
 
   border-bottom: 1px solid hsl(var(--border));
   padding: calc(v.$pad / 2) v.$pad;
-  color: hsl(var(--title));
 
   &__nav {
     display: flex;
@@ -15,9 +14,12 @@
     gap: v.$gap-xl;
 
     &-logo {
-      font-family: 'Anta', sans-serif;
-      font-size: v.$size-lg;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: v.$size-mdlg;
       text-shadow: 1px 1px 5px hsl(var(--title));
+      color: hsl(var(--title));
     }
 
     &-link {

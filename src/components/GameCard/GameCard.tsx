@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { Link } from 'react-router-dom';
 
 import {
   Card,
@@ -10,12 +8,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRightCircle, CalendarCheck2, Heart } from 'lucide-react';
+import { ArrowRightCircle, CalendarCheck2 } from 'lucide-react';
 import Rating from '@mui/material/Rating';
 
-import { getFavoriteGames } from '@/store/reducers/getFavoriteGames';
-import { updateFavoriteGame } from '@/store/reducers/updateFavoriteGame';
-
+import Like from '../Like/Like';
 import './GameCard.scss';
 
 type Genre = {
@@ -34,36 +30,7 @@ type GameProps = {
 };
 
 function GameCard(props: GameProps) {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
   const { id, name, slug, genres, released, rating, thumbnail } = props;
-
-  const userId = useAppSelector((state) => state.login.data.userId);
-  const favoriteGames = useAppSelector((state) => state.favoriteGames.game);
-
-  const isGameLiked = Object.values(favoriteGames).some(
-    (game) => game.gameId === id
-  );
-
-  const handleLikeGame = () => {
-    dispatch(
-      updateFavoriteGame({
-        userId,
-        gameId: id,
-        name,
-        slug,
-        released,
-        rating,
-        background_image: thumbnail,
-      })
-    );
-    navigate(0);
-  };
-
-  useEffect(() => {
-    dispatch(getFavoriteGames(userId));
-  }, [dispatch, userId]);
 
   return (
     <Card className="card">
@@ -73,13 +40,15 @@ function GameCard(props: GameProps) {
             <CardTitle>{name}</CardTitle>
           </Link>
 
-          <button onClick={handleLikeGame}>
-            {isGameLiked ? (
-              <Heart fill="hsl(var(--title))" size={18} />
-            ) : (
-              <Heart size={18} />
-            )}
-          </button>
+          {/* Like button component to add or remove game from favorite */}
+          <Like
+            id={id}
+            name={name}
+            slug={slug}
+            released={released}
+            rating={rating}
+            thumbnail={thumbnail}
+          />
         </div>
       </CardHeader>
 

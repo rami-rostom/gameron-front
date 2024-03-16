@@ -90,3 +90,8 @@
     }
   }
 }
+
+.game-header {
+  display: flex;
+  gap: v.$gap-xl;
+}

@@ -18,6 +18,7 @@ import { getOneGame } from '@/store/reducers/getOneGame';
 import { convertDateFormat } from '@/utils/calculation';
 
 import './Game.scss';
+import Like from '@/components/Like/Like';
 
 function Game() {
   const dispatch = useAppDispatch();
@@ -56,9 +57,19 @@ function Game() {
           </div>
 
           <div className="game__header-main">
-            <CardTitle className="game__header-main-title">
-              {gameData.name}
-            </CardTitle>
+            <div className="game-header">
+              <CardTitle className="game__header-main-title">
+                {gameData.name}
+              </CardTitle>
+              <Like
+                id={gameData.id}
+                name={gameData.name}
+                slug={gameData.slug}
+                released={gameData.released}
+                rating={gameData.rating}
+                thumbnail={gameData.background_image}
+              />
+            </div>
             <CardDescription className="game__header-main-info">
               {gameData.developers &&
                 gameData.developers.slice(0, 1).map((developer) => (

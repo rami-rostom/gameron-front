@@ -5,6 +5,13 @@ import { Heart } from 'lucide-react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+
 type LikeProps = {
   id: number;
   name: string;
@@ -47,13 +54,26 @@ function Like(props: LikeProps) {
   }, [dispatch, userId]);
 
   return (
-    <button onClick={handleLikeGame}>
-      {isGameLiked ? (
-        <Heart fill="hsl(var(--title))" size={18} />
-      ) : (
-        <Heart size={18} />
-      )}
-    </button>
+    <>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger onClick={handleLikeGame}>
+            {isGameLiked ? (
+              <Heart fill="hsl(var(--title))" size={18} />
+            ) : (
+              <Heart size={18} />
+            )}
+          </TooltipTrigger>
+          <TooltipContent>
+            {isGameLiked ? (
+              <p>Retirer des favoris</p>
+            ) : (
+              <p>Ajouter aux favoris</p>
+            )}
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </>
   );
 }
 

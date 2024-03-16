@@ -29,8 +29,6 @@ function Home() {
   // Fetch and render all games data
   const gamesData = useAppSelector((state) => state.getGames.game.results);
 
-  console.log(gamesData);
-
   // The default page is number 1 when fetching datas
   const [page, setPage] = useState(1);
 

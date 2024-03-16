@@ -1,7 +1,8 @@
-import GameCard from '@/components/GameCard/GameCard';
+import { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { getFavoriteGames } from '@/store/reducers/getFavoriteGames';
-import { useEffect } from 'react';
+import GameCard from '@/components/GameCard/GameCard';
 
 function Favorite() {
   const dispatch = useAppDispatch();
@@ -16,6 +17,8 @@ function Favorite() {
   return (
     <>
       <div className="home">
+        <h1 className="home__title">Mes jeux préférés</h1>
+
         {Object.values(favoriteGames).map((game) => (
           <GameCard
             key={game.gameId}

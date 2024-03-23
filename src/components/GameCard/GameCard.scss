@@ -89,3 +89,33 @@
     }
   }
 }
+
+@media all and (max-width: 900px) {
+  .card {
+    width: 60%;
+  }
+}
+
+@media all and (max-width: 650px) {
+  .card {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .card {
+    width: 90%;
+
+    &__info {
+      gap: v.$gap-sm;
+    }
+
+    &__footer {
+      justify-content: center;
+
+      &-more {
+        display: none;
+      }
+    }
+  }
+}
